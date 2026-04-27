@@ -2,27 +2,113 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Restaurant</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Store</title>
+
 <style>
-body {margin:0;font-family:Arial;background:#fff8f1;}
-header {background:#ef4444;color:white;padding:50px;text-align:center;}
-section {padding:30px;text-align:center;}
-.menu {background:white;padding:20px;margin:10px;display:inline-block;border-radius:10px;}
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #f8fafc;
+}
+
+header {
+  background: #1e293b;
+  color: white;
+  padding: 40px;
+  text-align: center;
+}
+
+h1 { margin: 0; }
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 30px;
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  width: 220px;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 8px;
+  height: 280px;
+  object-fit: cover;
+}
+
+.price {
+  color: #16a34a;
+  font-weight: bold;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1d4ed8;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #1e293b;
+  color: white;
+  margin-top: 20px;
+}
 </style>
 </head>
+
 <body>
 
 <header>
-<h1>Delicious Restaurant</h1>
-<p>Best food in town</p>
+  <h1>📚 Online Book Store</h1>
+  <p>Find your next favorite book</p>
 </header>
 
-<section>
-<h2>Menu</h2>
-<div class="menu">Burger - $5</div>
-<div class="menu">Pizza - $8</div>
-<div class="menu">Pasta - $7</div>
-</section>
+<div class="container">
+
+  <div class="card">
+    <img src="https://picsum.photos/200/300?1">
+    <h3>Business Book</h3>
+    <p class="price">$15</p>
+    <button>Buy Now</button>
+  </div>
+
+  <div class="card">
+    <img src="https://picsum.photos/200/300?2">
+    <h3>Programming Book</h3>
+    <p class="price">$20</p>
+    <button>Buy Now</button>
+  </div>
+
+  <div class="card">
+    <img src="https://picsum.photos/200/300?3">
+    <h3>Fiction Book</h3>
+    <p class="price">$12</p>
+    <button>Buy Now</button>
+  </div>
+
+</div>
+
+<footer>
+  © 2026 Book Store - All Rights Reserved
+</footer>
 
 </body>
 </html>
