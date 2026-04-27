@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Book Store Pro</title>
+<title>Book Store Full</title>
 
 <style>
 body {
@@ -12,41 +12,65 @@ body {
   background: #f1f5f9;
 }
 
-/* Header */
+/* LOGIN */
+.login {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #0f172a;
+  flex-direction: column;
+  color: white;
+}
+
+.login input {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  width: 200px;
+  margin-top: 10px;
+}
+
+.login button {
+  margin-top: 10px;
+  padding: 10px 15px;
+  border: none;
+  background: #22c55e;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* HEADER */
 header {
   background: #0f172a;
   color: white;
-  padding: 30px;
+  padding: 20px;
   text-align: center;
+  display: none;
 }
 
-/* Search */
-.search-box {
-  margin-top: 10px;
-  padding: 10px;
-  width: 60%;
-  max-width: 400px;
-  border-radius: 8px;
-  border: none;
-}
-
-/* Categories */
-.categories {
-  text-align: center;
-  margin: 20px;
-}
-
-.categories button {
-  margin: 5px;
-  padding: 8px 12px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  background: #334155;
+/* TOP BAR */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background: #1e293b;
   color: white;
 }
 
-/* Books */
+/* SEARCH */
+.search {
+  text-align: center;
+  margin: 10px;
+}
+
+.search input {
+  padding: 8px;
+  width: 250px;
+}
+
+/* BOOKS */
 .container {
   display: flex;
   flex-wrap: wrap;
@@ -57,53 +81,36 @@ header {
 
 .card {
   background: white;
-  width: 220px;
+  width: 200px;
+  padding: 10px;
   border-radius: 10px;
-  padding: 15px;
   text-align: center;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: scale(1.05);
 }
 
 .card img {
   width: 100%;
-  height: 260px;
+  height: 250px;
   object-fit: cover;
   border-radius: 8px;
 }
 
-.price {
-  color: #16a34a;
-  font-weight: bold;
-}
-
-button.buy {
-  margin-top: 10px;
+button {
   padding: 8px;
-  width: 100%;
   border: none;
-  background: #2563eb;
-  color: white;
   border-radius: 5px;
   cursor: pointer;
 }
 
-button.buy:hover {
-  background: #1d4ed8;
+.buy {
+  background: #2563eb;
+  color: white;
 }
 
-/* Cart */
 .cart {
-  position: fixed;
-  top: 20px;
-  right: 20px;
   background: #22c55e;
   color: white;
-  padding: 10px 15px;
+  padding: 8px 12px;
   border-radius: 8px;
 }
 </style>
@@ -111,67 +118,79 @@ button.buy:hover {
 
 <body>
 
-<header>
-  <h1>📚 Book Store Pro</h1>
-  <p>Find your favorite books instantly</p>
+<!-- LOGIN -->
+<div class="login" id="loginBox">
+  <h2>📚 Book Store Login</h2>
+  <input type="text" id="username" placeholder="Enter your name">
+  <button onclick="login()">Enter Store</button>
+</div>
 
-  <input type="text" class="search-box" id="search" placeholder="Search books...">
+<!-- MAIN -->
+<div id="main" style="display:none;">
+
+<header>
+  <h1>📚 Book Store</h1>
 </header>
 
-<div class="cart">
-🛒 Cart: <span id="cartCount">0</span>
+<div class="topbar">
+  <div>👤 Welcome, <span id="user"></span></div>
+  <div class="cart">🛒 <span id="cart">0</span></div>
 </div>
 
-<div class="categories">
-  <button onclick="filterBooks('all')">All</button>
-  <button onclick="filterBooks('business')">Business</button>
-  <button onclick="filterBooks('tech')">Tech</button>
-  <button onclick="filterBooks('fiction')">Fiction</button>
+<div class="search">
+  <input type="text" id="search" placeholder="Search books...">
 </div>
 
-<div class="container" id="bookList">
+<div class="container" id="books">
 
-  <div class="card" data-name="business book" data-type="business">
+  <div class="card" data-name="business book">
     <img src="https://picsum.photos/200/300?1">
     <h3>Business Book</h3>
-    <p class="price">$15</p>
-    <button class="buy" onclick="addToCart()">Buy</button>
+    <p>$15</p>
+    <button class="buy" onclick="add()">Buy</button>
   </div>
 
-  <div class="card" data-name="javascript book" data-type="tech">
+  <div class="card" data-name="javascript book">
     <img src="https://picsum.photos/200/300?2">
     <h3>JavaScript Guide</h3>
-    <p class="price">$20</p>
-    <button class="buy" onclick="addToCart()">Buy</button>
+    <p>$20</p>
+    <button class="buy" onclick="add()">Buy</button>
   </div>
 
-  <div class="card" data-name="fiction story" data-type="fiction">
+  <div class="card" data-name="fiction book">
     <img src="https://picsum.photos/200/300?3">
     <h3>Fiction Story</h3>
-    <p class="price">$12</p>
-    <button class="buy" onclick="addToCart()">Buy</button>
+    <p>$12</p>
+    <button class="buy" onclick="add()">Buy</button>
   </div>
+
+</div>
 
 </div>
 
 <script>
+
 let cart = 0;
 
-function addToCart() {
-  cart++;
-  document.getElementById("cartCount").innerText = cart;
+function login() {
+  let name = document.getElementById("username").value;
+
+  if(name === "") {
+    alert("Please enter your name");
+    return;
+  }
+
+  localStorage.setItem("user", name);
+
+  document.getElementById("loginBox").style.display = "none";
+  document.getElementById("main").style.display = "block";
+
+  document.getElementById("user").innerText = name;
 }
 
-function filterBooks(type) {
-  let books = document.querySelectorAll(".card");
-
-  books.forEach(book => {
-    if (type === "all" || book.dataset.type === type) {
-      book.style.display = "block";
-    } else {
-      book.style.display = "none";
-    }
-  });
+function add() {
+  cart++;
+  document.getElementById("cart").innerText = cart;
 }
 
 document.getElementById("search").addEventListener("keyup", function() {
@@ -183,6 +202,18 @@ document.getElementById("search").addEventListener("keyup", function() {
     book.style.display = name.includes(value) ? "block" : "none";
   });
 });
+
+// auto login if user exists
+window.onload = function() {
+  let user = localStorage.getItem("user");
+
+  if(user) {
+    document.getElementById("loginBox").style.display = "none";
+    document.getElementById("main").style.display = "block";
+    document.getElementById("user").innerText = user;
+  }
+}
+
 </script>
 
 </body>
